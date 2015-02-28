@@ -5,7 +5,7 @@ import java.io.*;
 public class FichierConf
 {
 	private static String CONF = "Config\\conf";
-	private static float largeurEcran, hauteurEcran, largeurBalle, largeurBarre, hauteurBarre, distanceBarreEcran;
+	private static float largeurEcran, hauteurEcran, largeurBalle, largeurBarre, hauteurBarre, distanceBarreEcran, mofifVitesse, vitesseInit;
 	
 	private FichierConf(){}
 	
@@ -17,15 +17,18 @@ public class FichierConf
 		largeurBarre = getFloat("LARGEUR_BARRE");
 		hauteurBarre = getFloat("HAUTEUR_BARRE");
 		distanceBarreEcran = getFloat("DISTANCE_BARRE_ECRAN");
+		mofifVitesse = getFloat("MODIF_VITESSE");
+		vitesseInit = getFloat("VITESSE_INIT");
 	}
 	
 	public static float LARGEUR_ECRAN() {return largeurEcran;}
 	public static float HAUTEUR_ECRAN() {return hauteurEcran;}
 	public static float LARGEUR_BALLE() {return largeurBalle;}
 	public static float LARGEUR_BARRE() {return largeurBarre;}
-	public static float HAUTEUR_BARRE() {return hauteurEcran;}
+	public static float HAUTEUR_BARRE() {return hauteurBarre;}
 	public static float DISTANCE_BARRE_ECRAN() {return distanceBarreEcran;}
-	
+	public static float MODIF_VITESSE() {return mofifVitesse;}
+	public static float VITESSE_INIT() {return vitesseInit;}
 	
 	private static float extractFloat(String line, String stat) throws NumberFormatException
 	{
@@ -42,9 +45,8 @@ public class FichierConf
 			{
 				String line;
 				boolean trouve = false;
-				while ((line = buff.readLine()) != null && trouve)
+				while ((line = buff.readLine()) != null && !trouve)
 				{
-					System.out.println(line);
 					if(line.contains(stat))
 					{
 						try
