@@ -9,7 +9,7 @@ public class FichierConf
 	
 	private FichierConf(){}
 	
-	public static void InitFichierConf()
+	public static void initFichierConf()
 	{
 		largeurEcran = getFloat("LARGEUR_ECRAN");
 		hauteurEcran = getFloat("HAUTEUR_ECRAN");

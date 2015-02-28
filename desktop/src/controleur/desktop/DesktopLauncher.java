@@ -10,7 +10,7 @@ import controleur.ControleurPrincipal;
 public class DesktopLauncher {
 	public static void main (String[] arg) {
 		LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
-		FichierConf.InitFichierConf();
+		FichierConf.initFichierConf();
 		config.width = (int)FichierConf.LARGEUR_ECRAN();
 		config.height = (int)FichierConf.HAUTEUR_ECRAN();
 		new LwjglApplication(new ControleurPrincipal(), config);

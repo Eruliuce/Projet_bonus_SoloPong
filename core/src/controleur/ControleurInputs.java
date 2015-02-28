@@ -11,7 +11,7 @@ import com.sun.corba.se.impl.oa.poa.ActiveObjectMap.Key;
 
 public class ControleurInputs implements InputProcessor
 {
-	private boolean pushLeft = false, pushRight = false;
+	private boolean pushLeft = false, pushRight = false, pushEnter = false;
 	
 	@Override
 	public boolean keyDown(int keycode) {
@@ -20,12 +20,16 @@ public class ControleurInputs implements InputProcessor
 			case Input.Keys.RIGHT :
 				pushRight = true;
 				pushLeft = false;
-			break;
+				break;
 			case Input.Keys.LEFT :
 				pushLeft = true;
 				pushRight = false;
+				break;
+			case Input.Keys.ENTER :
+				pushEnter = true;
+				break;
 			default:
-			break;
+				break;
 		}
 
 		return false;
@@ -41,8 +45,12 @@ public class ControleurInputs implements InputProcessor
 			break;
 			case Input.Keys.LEFT :
 				pushLeft = false;
+				break;
+			case Input.Keys.ENTER :
+				pushEnter = false;
+				break;	
 			default:
-			break;
+				break;
 		}
 		return false;
 	}
@@ -91,5 +99,10 @@ public class ControleurInputs implements InputProcessor
 	public boolean getRight()
 	{
 		return pushRight;
+	}
+	
+	public boolean getEnter()
+	{
+		return pushEnter;
 	}
 }
